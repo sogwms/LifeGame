@@ -4,7 +4,6 @@
 import lifeRule
 import lifeMap
 import lifeGui
-import time
 
 
 class LifeGame():
@@ -16,23 +15,17 @@ class LifeGame():
         """
         self.w = lifeGui.TkGui(cellWidth)
         self.map = lifeMap.Map(xWidth, yWidth)
-        
+
     def run(self):
         self.animate()
         self.w.master.mainloop()
 
     def animate(self):
         self.w.drawboard(self.map.map)
-        lifeRule.game_cycle(self.map)
+        lifeRule.game_cycle(self.map)       
         self.w.canvas.after(100, self.animate)
 
 if __name__ == '__main__':
-    game = LifeGame(80,80,10)
-    game.map.random(0.1)
+    game = LifeGame(36, 36, 16)
+    game.map.random(0.6)
     game.run()
-    
-
-    
-        
-    
-    

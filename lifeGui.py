@@ -1,9 +1,7 @@
 import tkinter
 from tkinter.constants import *
 
-
-
-class TkGui():
+class TkGui:
 
     color_dead = '#303030'
     color_live = '#00FFFF'
