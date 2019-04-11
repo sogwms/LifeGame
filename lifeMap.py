@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import lifeGui
 import random
 
 
@@ -10,7 +9,6 @@ class Cell():
 class Map():
 
     map = []
-    w = None 
     xMax = 0
     yMax = 0
 
@@ -18,8 +16,6 @@ class Map():
         """地图初始化"""
         Map.xMax = xMax
         Map.yMax = yMax        
-
-        Map.w = lifeGui.TkGui()
 
         for i in range(Map.xMax):
             temp = []
@@ -64,11 +60,5 @@ class Map():
         """获取指定方格细胞状态"""
         if (x < Map.xMax) and (y < Map.yMax):
             return Map.map[x][y]
-
-    def show(self, cellwidth):
-        Map.w.drawboard(Map.map, cellwidth)        
-
-    def showloop(self, cellwidth):
-        Map.w.drawboard(Map.map, cellwidth)
-        Map.w.master.mainloop()
+        
     

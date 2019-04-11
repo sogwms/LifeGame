@@ -3,17 +3,35 @@
 
 import lifeRule
 import lifeMap
+import lifeGui
 import time
 
+
+class LifeGame():
+
+    def __init__(self, xWidth=60, yWidth=60, cellWidth=10):
+        """
+        xWidth, yWidth: 格子图宽度和长度（以格子数计）
+        cellWidth: 格子像素宽
+        """
+        self.w = lifeGui.TkGui(cellWidth)
+        self.map = lifeMap.Map(xWidth, yWidth)
+        
+    def run(self):
+        self.animate()
+        self.w.master.mainloop()
+
+    def animate(self):
+        self.w.drawboard(self.map.map)
+        lifeRule.game_cycle(self.map)
+        self.w.canvas.after(100, self.animate)
+
 if __name__ == '__main__':
-    map = lifeMap.Map(66, 66)
-    map.random(0.1)
-    for i in range(100):
-        lifeRule.game_cycle(map)
-        time.sleep(0.01)
-        map.show(10)
-    #map.showloop(10)
+    game = LifeGame(80,80,10)
+    game.map.random(0.1)
+    game.run()
     
+
     
         
     
